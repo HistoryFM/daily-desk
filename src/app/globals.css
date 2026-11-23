@@ -1,0 +1,199 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-jb), ui-monospace, monospace;
+
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+}
+
+:root {
+  --paper: #f6f2ea;
+  --paper-2: #efe9dd;
+  --ink: #1d1b18;
+  --ink-2: #3a3631;
+  --muted: #7a7266;
+  --rule: #d9d1c3;
+  --accent: #b4412a;
+  --accent-soft: #f1ddd3;
+  --ok: #3d7a4f;
+  --warn: #b07a1c;
+  --bad: #b4412a;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #151412;
+    --paper-2: #1d1b18;
+    --ink: #ece6da;
+    --ink-2: #cfc7b8;
+    --muted: #8f877a;
+    --rule: #34302a;
+    --accent: #e0785d;
+    --accent-soft: #3a2620;
+    --ok: #7fb58e;
+    --warn: #d9a94a;
+    --bad: #e0785d;
+    color-scheme: dark;
+  }
+}
+
+html,
+body {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+body {
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+.prose-desk {
+  --tw-prose-body: var(--ink-2);
+  --tw-prose-headings: var(--ink);
+  --tw-prose-links: var(--accent);
+  --tw-prose-bold: var(--ink);
+  --tw-prose-quotes: var(--ink-2);
+  --tw-prose-quote-borders: var(--rule);
+  --tw-prose-bullets: var(--muted);
+  --tw-prose-counters: var(--muted);
+  --tw-prose-hr: var(--rule);
+  --tw-prose-code: var(--ink);
+  --tw-prose-th-borders: var(--rule);
+  --tw-prose-td-borders: var(--rule);
+  --tw-prose-pre-bg: var(--paper-2);
+  --tw-prose-pre-code: var(--ink);
+}
+.prose-desk a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.prose-desk h1 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.prose-desk h2 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.card {
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  border-radius: 4px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.8rem;
+  color: var(--ink);
+  background: var(--paper);
+  transition: background 0.15s, border-color 0.15s;
+  cursor: pointer;
+}
+.btn:hover {
+  background: var(--paper-2);
+  border-color: var(--muted);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.btn-accent {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.btn-accent:hover {
+  background: var(--ink-2);
+  border-color: var(--ink-2);
+}
+
+.input {
+  width: 100%;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.95rem;
+  color: var(--ink);
+  outline: none;
+}
+.input:focus {
+  border-color: var(--muted);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.1rem 0.45rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  color: var(--muted);
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.thinking span {
+  animation: pulse-dot 1.2s infinite;
+}
+.thinking span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.thinking span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Ask panel: on wide screens the page makes room for it instead of being covered. */
+@media (min-width: 1400px) {
+  html[data-ask="open"] body {
+    padding-right: 440px;
+  }
+}
+body {
+  transition: padding-right 200ms ease;
+}

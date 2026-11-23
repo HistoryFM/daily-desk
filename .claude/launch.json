@@ -1,0 +1,7 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "desk", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev"], "port": 4747, "env": { "DESK_SCHEDULER": "0" } },
+    { "name": "desk-dev", "runtimeExecutable": "npx", "runtimeArgs": ["next", "dev", "-p", "4748"], "port": 4748, "env": { "DESK_SCHEDULER": "0" } }
+  ]
+}
